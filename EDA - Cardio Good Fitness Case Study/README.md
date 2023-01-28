@@ -1,8 +1,11 @@
 ## Context
-Airbnb is an online platform that allows people to rent short-term accommodation. This ranges from regular people with a spare bedroom to property management firms who lease multiple rentals. On the one side, Airbnb enables owners to list their space and earn rental money. On the other side, it provides travelers easy access to renting private homes.
+This is an EDA (Exploratory Data Analysis) case study, utilizing customer data for treadmill product(s) of a retail store called Cardio Good Fitness.
 
-Airbnb receives commissions from two sources upon every booking, namely from the hosts and guests. For every booking, Airbnb charges the guest 6-12% of the booking fee. Moreover, Airbnb charges the host 3% for every successful transaction.
+Dataset can be found here: https://www.kaggle.com/datasets/saurav9786/cardiogoodfitness
+
+We want to identify differences between the customers of each product, as well as any relationships between the different attributes of the customers. Additionally, we want to look out for any other line of questioning that could be relevant for the business.
  
 ## Objective
-- To explore, visualize the data and build a linear regression model.
-- Come up with a pricing model that can effectively predict the Rent for accommodation and can help hosts, travelers, and also the business in devising profitable strategies.
+- Come up with a customer profile (characteristics of a customer) of the different products
+- Perform univariate and multivariate analyses
+- Generate a set of insights and recommendations that will help the company in targeting new customers
