@@ -1,8 +1,18 @@
 ## Context
-Airbnb is an online platform that allows people to rent short-term accommodation. This ranges from regular people with a spare bedroom to property management firms who lease multiple rentals. On the one side, Airbnb enables owners to list their space and earn rental money. On the other side, it provides travelers easy access to renting private homes.
+A viable business model is a central concept that helps you to understand the existing ways of doing the business and how to change the ways for the benefit of the tourism sector.
 
-Airbnb receives commissions from two sources upon every booking, namely from the hosts and guests. For every booking, Airbnb charges the guest 6-12% of the booking fee. Moreover, Airbnb charges the host 3% for every successful transaction.
+One of the ways to expand the customer base is to introduce a new offering of packages.
+
+Currently, there are 5 types of packages a tourism company is offering - Basic, Standard, Deluxe, Super Deluxe, King. Looking at the data of the last year, we observed that 18% of the customers purchased the packages.
+
+However, it was difficult to identify the potential customers because customers were contacted at random without looking at the available information.
+
+The company is now planning to launch a new product i.e. Wellness Tourism Package. Wellness Tourism is defined as Travel that allows the traveler to maintain, enhance or kick-start a healthy lifestyle, and support or increase one's sense of well-being.
+
+This time company wants to harness the available data of existing and potential customers to target the right customers.
+
+Analyze the customers' data and information to provide recommendations to the Policy Maker and build a model to predict the potential customer who is going to purchase the newly introduced travel package.
  
 ## Objective
-- To explore, visualize the data and build a linear regression model.
-- Come up with a pricing model that can effectively predict the Rent for accommodation and can help hosts, travelers, and also the business in devising profitable strategies.
+- Analyze the customers' data and information to provide recommendations to the Policy Maker
+- Build a model to predict the potential customer who is going to purchase the newly introduced travel package.
