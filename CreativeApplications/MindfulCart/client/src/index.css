@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0 0% 98.04%);
+  --foreground: hsl(210 25% 7.8431%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(210 25% 7.8431%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(210 25% 7.8431%);
+  --primary: hsl(243.75 89.36% 62.35%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(153.64 64.06% 39.02%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(240 1.9608% 90%);
+  --muted-foreground: hsl(210 25% 7.8431%);
+  --accent: hsl(329.75 82.20% 60.39%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(356.3033 90.5579% 54.3137%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --warning: hsl(42.86 95.83% 50.59%);
+  --warning-foreground: hsl(210 25% 7.8431%);
+  --border: hsl(201.4286 30.4348% 90.9804%);
+  --input: hsl(200 23.0769% 97.4510%);
+  --ring: hsl(243.75 89.36% 62.35%);
+  --chart-1: hsl(243.75 89.36% 62.35%);
+  --chart-2: hsl(153.64 64.06% 39.02%);
+  --chart-3: hsl(42.86 95.83% 50.59%);
+  --chart-4: hsl(329.75 82.20% 60.39%);
+  --chart-5: hsl(356.3033 90.5579% 54.3137%);
+  --sidebar: hsl(0 0% 100%);
+  --sidebar-foreground: hsl(210 25% 7.8431%);
+  --sidebar-primary: hsl(243.75 89.36% 62.35%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(243.75 89.36% 62.35% / 0.1);
+  --sidebar-accent-foreground: hsl(243.75 89.36% 62.35%);
+  --sidebar-border: hsl(201.4286 30.4348% 90.9804%);
+  --sidebar-ring: hsl(243.75 89.36% 62.35%);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 0.75rem;
+  --spacing: 1.25rem;
+}
+
+.dark {
+  --background: hsl(210 25% 7.8431%);
+  --foreground: hsl(0 0% 98.04%);
+  --card: hsl(228 9.8039% 10%);
+  --card-foreground: hsl(0 0% 85.0980%);
+  --popover: hsl(210 25% 7.8431%);
+  --popover-foreground: hsl(0 0% 98.04%);
+  --primary: hsl(243.75 89.36% 62.35%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(153.64 64.06% 39.02%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(0 0% 9.4118%);
+  --muted-foreground: hsl(210 3.3898% 46.2745%);
+  --accent: hsl(329.75 82.20% 60.39%);
+  --accent-foreground: hsl(0 0% 100%);
+  --destructive: hsl(356.3033 90.5579% 54.3137%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --warning: hsl(42.86 95.83% 50.59%);
+  --warning-foreground: hsl(210 25% 7.8431%);
+  --border: hsl(210 5.2632% 14.9020%);
+  --input: hsl(207.6923 27.6596% 18.4314%);
+  --ring: hsl(243.75 89.36% 62.35%);
+  --sidebar: hsl(228 9.8039% 10%);
+  --sidebar-foreground: hsl(0 0% 85.0980%);
+  --sidebar-primary: hsl(243.75 89.36% 62.35%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(329.75 82.20% 60.39% / 0.1);
+  --sidebar-accent-foreground: hsl(329.75 82.20% 60.39%);
+  --sidebar-border: hsl(205.7143 15.7895% 26.0784%);
+  --sidebar-ring: hsl(243.75 89.36% 62.35%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .mindful-card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow;
+  }
+  
+  .status-indicator {
+    @apply inline-block w-2 h-2 rounded-full;
+  }
+  
+  .status-due {
+    @apply bg-warning;
+  }
+  
+  .status-on-track {
+    @apply bg-secondary;
+  }
+  
+  .status-overdue {
+    @apply bg-destructive;
+  }
+}

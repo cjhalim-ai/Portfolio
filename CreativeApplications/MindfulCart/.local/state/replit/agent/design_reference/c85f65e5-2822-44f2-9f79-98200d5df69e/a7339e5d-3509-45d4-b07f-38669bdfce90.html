@@ -1,0 +1,637 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindfulCart - Thoughtful Shopping Made Simple</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366F1',
+                        secondary: '#10B981',
+                        warning: '#F59E0B',
+                        accent: '#EC4899',
+                        'warm-bg': '#FAFAFA',
+                        'charcoal': '#111827'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif']
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                        '22': '5.5rem'
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-warm-bg font-inter text-charcoal">
+    <!-- @COMPONENT: AppHeader [navigation and user controls] -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-shopping-bag text-white text-sm"></i>
+                        </div>
+                        <h1 class="text-xl font-poppins font-semibold">MindfulCart</h1>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="relative p-2 text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-bell text-lg"></i>
+                        <span class="absolute -top-1 -right-1 w-5 h-5 bg-accent text-white text-xs rounded-full flex items-center justify-center">3</span>
+                    </button>
+                    
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gray-300 rounded-full"></div>
+                        <span class="text-sm font-medium" data-bind="user.name">Sarah Chen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: AppHeader -->
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            
+            <!-- @COMPONENT: Sidebar [folder navigation and controls] -->
+            <aside class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-lg font-poppins font-semibold">My Lists</h2>
+                        <button class="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                            <i class="fas fa-plus text-sm"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Folder Structure -->
+                    <div class="space-y-2">
+                        <div class="folder-item bg-primary bg-opacity-10 border-l-4 border-primary p-3 rounded-r-lg">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-folder text-primary text-sm"></i>
+                                    <span class="font-medium text-sm">Electronics</span>
+                                </div>
+                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">12 items</span>
+                            </div>
+                            
+                            <!-- Nested items -->
+                            <div class="ml-4 mt-2 space-y-1">
+                                <div class="flex items-center space-x-2 py-1">
+                                    <i class="fas fa-circle text-xs text-gray-400"></i>
+                                    <span class="text-sm text-gray-600">Smartphones</span>
+                                    <span class="text-xs text-gray-400">(4)</span>
+                                </div>
+                                <div class="flex items-center space-x-2 py-1">
+                                    <i class="fas fa-circle text-xs text-gray-400"></i>
+                                    <span class="text-sm text-gray-600">Laptops</span>
+                                    <span class="text-xs text-gray-400">(3)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="folder-item p-3 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-folder text-gray-400 text-sm"></i>
+                                    <span class="font-medium text-sm">Home & Garden</span>
+                                </div>
+                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">8 items</span>
+                            </div>
+                        </div>
+                        
+                        <div class="folder-item p-3 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-folder text-gray-400 text-sm"></i>
+                                    <span class="font-medium text-sm">Fashion</span>
+                                </div>
+                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">15 items</span>
+                            </div>
+                        </div>
+                        
+                        <div class="folder-item p-3 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-folder text-gray-400 text-sm"></i>
+                                    <span class="font-medium text-sm">Books & Learning</span>
+                                </div>
+                                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">6 items</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="mt-8 pt-6 border-t border-gray-100">
+                        <h3 class="text-sm font-medium text-gray-700 mb-3">This Week</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Pending Reviews</span>
+                                <span class="font-medium text-warning">7</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Money Saved</span>
+                                <span class="font-medium text-secondary">$248</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">Items Purchased</span>
+                                <span class="font-medium">3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!-- @END_COMPONENT: Sidebar -->
+            
+            <!-- @COMPONENT: MainContent [item lists and management] -->
+            <main class="lg:col-span-3">
+                <!-- Top Actions Bar -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
+                    <div>
+                        <h1 class="text-2xl font-poppins font-bold">Electronics</h1>
+                        <p class="text-gray-600 text-sm mt-1">12 items • 3 pending reviews</p>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3">
+                        <div class="relative">
+                            <input type="text" placeholder="Search items..." class="pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400 text-sm"></i>
+                        </div>
+                        
+                        <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors flex items-center space-x-2">
+                            <i class="fas fa-plus text-sm"></i>
+                            <span>Add Item</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Pending Reviews Banner -->
+                <div class="bg-warning bg-opacity-10 border border-warning border-opacity-20 rounded-xl p-4 mb-6">
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-clock text-warning mt-1"></i>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-warning mb-1">3 Items Need Your Review</h3>
+                            <p class="text-sm text-gray-700 mb-3">You have scheduled reviews waiting for iPhone 15 Pro, MacBook Air M2, and AirPods Pro.</p>
+                            <button class="bg-warning text-white px-4 py-2 rounded-lg text-sm hover:bg-yellow-500 transition-colors">
+                                Review Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Items Grid -->
+                <div class="space-y-4">
+                    <!-- @MAP: items.map(item => ( -->
+                    <!-- Featured Item with AI Suggestion -->
+                    <div class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="p-6">
+                            <div class="flex items-start space-x-4">
+                                <!-- A sleek iPhone 15 Pro in deep purple color against white background -->
+                                <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300" alt="iPhone 15 Pro" class="w-20 h-20 object-cover rounded-lg">
+                                
+                                <div class="flex-1">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <h3 class="font-semibold text-lg" data-bind="item.name">iPhone 15 Pro (256GB)</h3>
+                                            <p class="text-gray-600 text-sm mt-1" data-bind="item.category">Smartphones</p>
+                                        </div>
+                                        
+                                        <div class="flex items-center space-x-2">
+                                            <span class="bg-accent bg-opacity-10 text-accent px-3 py-1 rounded-full text-sm font-medium">
+                                                <i class="fas fa-robot mr-1"></i>AI Deal Alert
+                                            </span>
+                                            <button class="p-2 text-gray-400 hover:text-gray-600">
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Price Tracking -->
+                                    <div class="mt-4 p-4 bg-secondary bg-opacity-5 rounded-lg border border-secondary border-opacity-20">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-sm font-medium text-secondary">Price Drop Alert!</span>
+                                            <span class="text-xs text-gray-500">Updated 2h ago</span>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <div>
+                                                <span class="text-2xl font-bold text-secondary" data-bind="item.currentPrice">$899</span>
+                                                <span class="text-sm text-gray-500 line-through ml-2" data-bind="item.originalPrice">$999</span>
+                                            </div>
+                                            <div class="flex items-center space-x-1 text-secondary">
+                                                <i class="fas fa-arrow-down text-sm"></i>
+                                                <span class="font-medium">$100 (10%)</span>
+                                            </div>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-2">Best price in 6 months. Similar to Black Friday pricing.</p>
+                                    </div>
+                                    
+                                    <!-- Review Schedule -->
+                                    <div class="mt-4 flex items-center justify-between">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="flex items-center space-x-2">
+                                                <i class="fas fa-calendar-alt text-gray-400 text-sm"></i>
+                                                <span class="text-sm text-gray-600">Added 5 days ago</span>
+                                            </div>
+                                            
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-2 h-2 bg-warning rounded-full"></div>
+                                                <span class="text-sm text-warning font-medium">Review due in 2 days</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center space-x-2">
+                                            <button class="px-3 py-1 border border-gray-200 rounded-lg text-sm hover:bg-gray-50 transition-colors">
+                                                Review Now
+                                            </button>
+                                            <button class="bg-secondary text-white px-4 py-1 rounded-lg text-sm hover:bg-green-600 transition-colors">
+                                                Buy Now
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Regular Item -->
+                    <div class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="p-6">
+                            <div class="flex items-start space-x-4">
+                                <!-- A silver MacBook Air laptop open on a clean desk setup -->
+                                <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300" alt="MacBook Air M2" class="w-20 h-20 object-cover rounded-lg">
+                                
+                                <div class="flex-1">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <h3 class="font-semibold text-lg" data-bind="item.name">MacBook Air M2 (512GB)</h3>
+                                            <p class="text-gray-600 text-sm mt-1" data-bind="item.category">Laptops</p>
+                                        </div>
+                                        
+                                        <button class="p-2 text-gray-400 hover:text-gray-600">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Price Info -->
+                                    <div class="mt-3">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl font-bold" data-bind="item.currentPrice">$1,399</span>
+                                            <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">Stable price</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Progress Timeline -->
+                                    <div class="mt-4">
+                                        <div class="flex items-center space-x-2 mb-2">
+                                            <span class="text-sm font-medium text-gray-700">Review Schedule</span>
+                                            <div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                                                <div class="h-full bg-primary rounded-full" style="width: 60%"></div>
+                                            </div>
+                                            <span class="text-xs text-gray-500">3/5 reviews</span>
+                                        </div>
+                                        
+                                        <div class="flex items-center justify-between text-xs text-gray-500">
+                                            <span>1 week ✓</span>
+                                            <span>1 month ✓</span>
+                                            <span>3 months ✓</span>
+                                            <span class="text-warning font-medium">6 months (due)</span>
+                                            <span>1 year</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4 flex items-center justify-between">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="flex items-center space-x-2">
+                                                <i class="fas fa-calendar-alt text-gray-400 text-sm"></i>
+                                                <span class="text-sm text-gray-600">Added 3 months ago</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center space-x-2">
+                                            <button class="px-3 py-1 border border-gray-200 rounded-lg text-sm hover:bg-gray-50 transition-colors">
+                                                Edit
+                                            </button>
+                                            <button class="px-3 py-1 border border-gray-200 rounded-lg text-sm hover:bg-gray-50 transition-colors">
+                                                Review
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Another Item -->
+                    <div class="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="p-6">
+                            <div class="flex items-start space-x-4">
+                                <!-- White AirPods Pro in their charging case on clean background -->
+                                <img src="https://images.unsplash.com/photo-1606220838315-056192d5e927?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300" alt="AirPods Pro" class="w-20 h-20 object-cover rounded-lg">
+                                
+                                <div class="flex-1">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <h3 class="font-semibold text-lg" data-bind="item.name">AirPods Pro (2nd Gen)</h3>
+                                            <p class="text-gray-600 text-sm mt-1" data-bind="item.category">Audio</p>
+                                            <p class="text-sm text-gray-500 mt-2" data-bind="item.notes">Need better noise cancellation for commute</p>
+                                        </div>
+                                        
+                                        <div class="flex items-center space-x-2">
+                                            <span class="bg-warning bg-opacity-10 text-warning px-3 py-1 rounded-full text-sm font-medium">
+                                                Review Due
+                                            </span>
+                                            <button class="p-2 text-gray-400 hover:text-gray-600">
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl font-bold" data-bind="item.currentPrice">$249</span>
+                                            <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">Price watched</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4 flex items-center justify-between">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="flex items-center space-x-2">
+                                                <i class="fas fa-calendar-alt text-gray-400 text-sm"></i>
+                                                <span class="text-sm text-gray-600">Added 1 week ago</span>
+                                            </div>
+                                            
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-2 h-2 bg-warning rounded-full"></div>
+                                                <span class="text-sm text-warning font-medium">Review due today</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center space-x-2">
+                                            <button class="px-3 py-1 bg-warning text-white rounded-lg text-sm hover:bg-yellow-500 transition-colors">
+                                                Review Now
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- @END_MAP )) -->
+                </div>
+                
+                <!-- Load More Button -->
+                <div class="text-center mt-8">
+                    <button class="px-6 py-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                        Load More Items
+                    </button>
+                </div>
+            </main>
+            <!-- @END_COMPONENT: MainContent -->
+        </div>
+    </div>
+    
+    <!-- @COMPONENT: QuestionnaireModal [review questionnaire interface] -->
+    <div id="questionnaireModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-100">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-xl font-poppins font-semibold">1-Week Review</h2>
+                        <p class="text-gray-600 text-sm mt-1">iPhone 15 Pro (256GB)</p>
+                    </div>
+                    <button class="p-2 text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="mt-4">
+                    <div class="flex items-center justify-between text-sm text-gray-600 mb-2">
+                        <span>Question 1 of 5</span>
+                        <span>20% complete</span>
+                    </div>
+                    <div class="w-full bg-gray-100 rounded-full h-2">
+                        <div class="bg-primary h-2 rounded-full transition-all duration-300" style="width: 20%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <div class="space-y-6">
+                    <!-- Question 1 -->
+                    <div>
+                        <h3 class="font-semibold text-lg mb-3">How often have you thought about this purchase in the past week?</h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="frequency" value="daily" class="text-primary">
+                                <span>Daily - It's on my mind often</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="frequency" value="few-times" class="text-primary">
+                                <span>A few times - I think about it occasionally</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="frequency" value="rarely" class="text-primary">
+                                <span>Rarely - I mostly forgot about it</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="frequency" value="never" class="text-primary">
+                                <span>Never - I haven't thought about it</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Custom Question -->
+                    <div class="bg-accent bg-opacity-5 border border-accent border-opacity-20 rounded-lg p-4">
+                        <div class="flex items-start space-x-2 mb-3">
+                            <i class="fas fa-user text-accent mt-1"></i>
+                            <span class="text-sm font-medium text-accent">Your Custom Question</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-3">Has my current phone shown any signs that it needs replacing?</h3>
+                        <textarea class="w-full p-3 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-primary focus:border-transparent outline-none" rows="3" placeholder="Reflect on your current device's performance..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between mt-8 pt-6 border-t border-gray-100">
+                    <button class="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors">
+                        Skip This Review
+                    </button>
+                    
+                    <div class="flex items-center space-x-3">
+                        <button class="px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                            Save & Continue Later
+                        </button>
+                        <button class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
+                            Next Question
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: QuestionnaireModal -->
+    
+    <!-- @COMPONENT: AddItemModal [item creation interface] -->
+    <div id="addItemModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-100">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-poppins font-semibold">Add New Item</h2>
+                    <button class="p-2 text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <form class="p-6 space-y-6">
+                <!-- Basic Info -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Item Name</label>
+                        <input type="text" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="What are you considering buying?">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Folder</label>
+                        <select class="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                            <option>Electronics</option>
+                            <option>Home & Garden</option>
+                            <option>Fashion</option>
+                            <option>Books & Learning</option>
+                            <option>+ Create New Folder</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Price & Link -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Price</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-gray-500">$</span>
+                            <input type="number" class="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="0.00">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Product Link</label>
+                        <input type="url" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="https://...">
+                    </div>
+                </div>
+                
+                <!-- Notes -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Notes & Reasoning</label>
+                    <textarea class="w-full p-3 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-primary focus:border-transparent outline-none" rows="4" placeholder="Why are you considering this purchase? What need does it fulfill?"></textarea>
+                </div>
+                
+                <!-- Review Schedule -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-3">Review Schedule</label>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                        <label class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <input type="checkbox" class="text-primary" checked>
+                            <span class="text-sm">1 day</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <input type="checkbox" class="text-primary" checked>
+                            <span class="text-sm">1 week</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <input type="checkbox" class="text-primary" checked>
+                            <span class="text-sm">1 month</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <input type="checkbox" class="text-primary">
+                            <span class="text-sm">3 months</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <input type="checkbox" class="text-primary">
+                            <span class="text-sm">6 months</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
+                            <input type="checkbox" class="text-primary">
+                            <span class="text-sm">1 year</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Custom Questions -->
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <label class="block text-sm font-medium text-gray-700">Custom Review Questions</label>
+                        <button type="button" class="text-primary hover:text-indigo-600 text-sm font-medium">
+                            + Add Question
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <input type="text" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="e.g., Has my current device shown any problems?">
+                        <input type="text" class="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="e.g., Have I found alternatives or better deals?">
+                    </div>
+                </div>
+                
+                <!-- AI Features Toggle -->
+                <div class="bg-accent bg-opacity-5 border border-accent border-opacity-20 rounded-lg p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-medium text-gray-900">Enable AI Price Monitoring</h3>
+                            <p class="text-sm text-gray-600 mt-1">Get notified about price drops and better deals</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary peer-focus:ring-opacity-25 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between pt-6 border-t border-gray-100">
+                    <button type="button" class="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors">
+                        Cancel
+                    </button>
+                    
+                    <button type="submit" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
+                        Add to Wishlist
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: AddItemModal -->
+    
+    <script>
+        (function() {
+            // TODO: Implement state management for modals, form handling, and data persistence
+            // TODO: Add API integration for price monitoring and AI suggestions
+            // TODO: Implement questionnaire logic and scheduling system
+            
+            // Basic modal functionality for demonstration
+            const addItemButtons = document.querySelectorAll('[data-event*="addItem"]');
+            const reviewButtons = document.querySelectorAll('[data-event*="review"]');
+            const modals = document.querySelectorAll('[id$="Modal"]');
+            
+            // Modal toggle functionality would go here
+            console.log('MindfulCart app initialized');
+            
+            // Placeholder for drag-and-drop folder organization
+            // TODO: Implement drag-and-drop with touch support
+            
+            // Placeholder for form validation
+            // TODO: Add comprehensive form validation and error handling
+            
+            // Placeholder for notification system
+            // TODO: Implement push notifications for review reminders
+        })();
+    </script>
+</body>
+</html>
